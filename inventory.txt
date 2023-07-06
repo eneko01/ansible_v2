@@ -1,0 +1,13 @@
+[web_servers]
+serv1@192.168.1.113
+serv2@192.168.1.65
+eneko@192.168.1.112
+
+[db_servers]
+eneko@192.168.1.112
+
+[file_servers]
+serv3@192.168.1.183
+
+[workstation]
+workstation@192.168.1.171

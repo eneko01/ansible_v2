@@ -1,0 +1,22 @@
+- name: Installera Docker
+  hosts: all
+  become: true
+  tasks:
+    - name: Installera Docker på Fedora
+      package:
+        name: docker-ce-cli
+        state: present
+      when: "'Fedora' in ansible_distribution"
+
+    - name: Installera Docker på CentOS
+      package:
+        name: docker
+        state: present
+      when: "'CentOS' in ansible_distribution"
+
+    - name: Installera Docker på Debian-baserade system
+      package:
+        name: docker.io
+        state: present
+      when: "'Debian' in ansible_distribution"
+

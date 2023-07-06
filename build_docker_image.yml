@@ -1,0 +1,9 @@
+- name: Bygg Docker-image
+  hosts: all
+  become: true
+  tasks:
+    - name: Bygg Docker-image
+      docker_image:
+        path: /path/to/dockerfile
+        name: my_image
+        tag: latest

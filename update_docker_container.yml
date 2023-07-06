@@ -1,0 +1,16 @@
+- name: Uppdatera Docker-container
+  hosts: all
+  become: true
+  tasks:
+    - name: Stoppa Docker-container
+      docker_container:
+        name: min_container
+        state: stopped
+    - name: Dra senaste bild
+      docker_image:
+        name: my_image
+        source: pull
+    - name: Starta Docker-container
+      docker_container:
+        name: min_container
+        state: started
