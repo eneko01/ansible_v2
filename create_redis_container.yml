@@ -2,13 +2,13 @@
 - name: Skapa Redis-container
   hosts: all
   become: true
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - name: Skapa mapp för Redis-data
+    - name: Skapa Redis-datakatalog
       file:
-        path: /path/to/redis/data
+        path: /var/lib/redis
         state: directory
+      environment:
+        my_var: "{{ hostvars[inventory_hostname]['my_var'] | default('default_value') }}"
 
     - name: Skapa Redis-container
       docker_container:
@@ -17,7 +17,7 @@
         state: started
         volumes:
           - /var/lib/redis:/data
-          - /etc/redis/redis.conf:/usr/local/etc/redis/redis.conf
         ports:
           - "6379:6379"
-
+      environment:
+        my_var: "{{ hostvars[inventory_hostname]['my_var'] | default('default_value') }}"

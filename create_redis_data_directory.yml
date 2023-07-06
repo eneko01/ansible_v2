@@ -1,0 +1,11 @@
+---
+- name: Skapa Redis-datakatalog
+  hosts: all
+  become: true
+  tasks:
+    - name: Skapa Redis-datakatalog
+      file:
+        path: /var/lib/redis
+        state: directory
+      environment:
+        my_var: "{{ hostvars[inventory_hostname]['my_var'] | default('default_value') }}"
