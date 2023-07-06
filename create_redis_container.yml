@@ -1,0 +1,23 @@
+---
+- name: Skapa Redis-container
+  hosts: all
+  become: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+    - name: Skapa mapp för Redis-data
+      file:
+        path: /path/to/redis/data
+        state: directory
+
+    - name: Skapa Redis-container
+      docker_container:
+        name: my_redis
+        image: redis:latest
+        state: started
+        volumes:
+          - /var/lib/redis:/data
+          - /etc/redis/redis.conf:/usr/local/etc/redis/redis.conf
+        ports:
+          - "6379:6379"
+
