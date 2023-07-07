@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
+    environment:
+      - cluster.name=elastic-cluster
+      - discovery.type=single-node
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - elastic_network
+
+networks:
+  elastic_network:
+    external: true
