@@ -1,16 +1,32 @@
+---
 - name: Uppdatera Docker-container
-  hosts: all
+  hosts: web_servers
   become: true
   tasks:
-    - name: Stoppa Docker-container
+    - name: Stoppa Redis-container
       docker_container:
-        name: min_container
+        name: my_redis_container
+        image: redis:latest
         state: stopped
-    - name: Dra senaste bild
-      docker_image:
-        name: my_image
-        source: pull
-    - name: Starta Docker-container
+
+    - name: Ta bort Redis-container
       docker_container:
-        name: min_container
+        name: my_redis_container
+        image: redis:latest
+        state: absent
+
+    - name: Dra senaste Redis-bilden
+      docker_image:
+        name: redis:latest
+        source: pull
+
+    - name: Skapa Redis-container
+      docker_container:
+        name: my_redis_container
+        image: redis:latest
         state: started
+        restart_policy: always
+        ports:
+          - "6379:6379"
+        volumes:
+          - "/var/lib/redis/data:/data"
