@@ -1,15 +1,15 @@
 all:
   hosts:
     serv1:
-      ansible_host: 192.168.1.113
+      ansible_host: serv1@192.168.1.113
     serv2:
-      ansible_host: 192.168.1.65
+      ansible_host: serv2@192.168.1.65
     eneko:
-      ansible_host: 192.168.1.112
+      ansible_host: eneko@192.168.1.112
     serv3:
-      ansible_host: 192.168.1.183
+      ansible_host: serv3@192.168.1.183
     workstation:
-      ansible_host: 192.168.1.171
+      ansible_host: workstation@192.168.1.171
 
 web_servers:
   hosts:
