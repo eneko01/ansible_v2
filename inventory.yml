@@ -1,0 +1,30 @@
+all:
+  hosts:
+    serv1:
+      ansible_host: 192.168.1.113
+    serv2:
+      ansible_host: 192.168.1.65
+    eneko:
+      ansible_host: 192.168.1.112
+    serv3:
+      ansible_host: 192.168.1.183
+    workstation:
+      ansible_host: 192.168.1.171
+
+web_servers:
+  hosts:
+    serv1:
+    serv2:
+    eneko:
+
+db_servers:
+  hosts:
+    eneko:
+
+file_servers:
+  hosts:
+    serv3:
+
+workstation:
+  hosts:
+    workstation:
