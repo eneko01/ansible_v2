@@ -18,6 +18,6 @@
         volumes:
           - /var/lib/redis:/data
         ports:
-          - "6379:6379"
+          - "6380:6379"
       environment:
         my_var: "{{ hostvars[inventory_hostname]['my_var'] | default('default_value') }}"
