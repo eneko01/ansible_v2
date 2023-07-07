@@ -10,13 +10,14 @@ all:
       ansible_host: serv3@192.168.1.183
     workstation:
       ansible_host: workstation@192.168.1.171
-
+    hosta:
+      ansible_host: 192.168.1.64
 web_servers:
   hosts:
     serv1:
     serv2:
     eneko:
-
+    hosta:
 db_servers:
   hosts:
     eneko:
